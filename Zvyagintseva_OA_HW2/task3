@@ -1,0 +1,10 @@
+# Задайте список из n чисел последовательности 〖(1+1/n)〗^n и выведите на экран их сумму.
+
+num = input('Ведите натуральное число: ')
+while not num.isdigit():
+    num = input('Введите натуральное число: ')
+
+sum_of_elements = 0
+for i in range(int(num)):
+    sum_of_elements = sum_of_elements + (1 + (1 / (i + 1))) ** (i + 1)
+print(f'{float(sum_of_elements):.2f}')
