@@ -1,0 +1,17 @@
+# Реализуйте алгоритм перемешивания списка.
+
+import random
+
+N = input('Введите размер списка: ')
+while not N.isdigit():
+    N = input('Введите размер списка: ')
+
+list_N = []
+
+for i in range(int(N)):
+    new_element = random.randint(-int(N), int(N))
+    list_N.append(new_element)
+print(f'Изначальный список: {list_N}')
+
+random.shuffle(list_N)
+print(f'Перемешанный список: {list_N}')

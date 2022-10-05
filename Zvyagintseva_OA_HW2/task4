@@ -1,0 +1,26 @@
+"""Задайте число N, создайте список: [-N, N]. Найдите произведение элементов на указанных позициях. 
+Позиции (случайные) хранятся в файле file.txt 
+(создаётся во время выполнения кода и зависит от количества элементов в списке) в одной строке одно число."""
+
+from random import randrange
+
+num = input('Ведите натуральное число, отличное от 0: ')
+while not num.isdigit() or int(num) == 0:
+    num = input('Ведите натуральное число, отличное от 0: ')
+
+list_num = []
+product = 1
+
+with open('file.txt', 'w') as File:
+    count = randrange(1, int(num))
+    for i in range(0, count):
+        File.writelines(str(randrange(0, int(num)+1))+'\n')
+
+for i in range(-int(num), int(num)+1):
+    list_num.append(i)
+print(list_num)
+
+with open('file.txt', 'r') as File:
+    for line in File:
+        product *= list_num[int(line)]
+print(f'Произведение элементов на указанных позициях: {product}')
