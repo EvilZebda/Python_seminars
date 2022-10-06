@@ -1,0 +1,17 @@
+"""Напишите программу, которая найдёт произведение пар чисел списка. 
+ Парой считаем первый и последний элемент, второй и предпоследний и т.д."""
+
+from random import randint
+from math import ceil
+
+N = input('Введите размер списка: ')
+while not N.isdigit():
+    N = input('Введите размер списка: ')
+
+list_N = []
+for i in range(int(N)):
+    elements = randint(-10, 10)
+    list_N.append(elements)
+
+n = len(list_N)
+print(f'Список случайных чисел: {list_N }\nПроизведение пар чисел: {[list_N[i]*list_N[-i-1] for i in range(ceil(n/2))]}')
