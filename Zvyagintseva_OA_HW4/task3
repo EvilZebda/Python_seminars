@@ -1,0 +1,21 @@
+"""Задайте последовательность чисел.
+Напишите программу, которая выведет список неповторяющихся элементов исходной последовательности.
+Примечание!!!! Некорректная формулировка задачи, на мой взгляд"""
+from random import randint
+
+numbers = []
+for i in range(10):
+    number = randint(0, 10)
+    numbers.append(number)
+print(f'В последовательности чисел: {numbers}\nУНИКАЛЬНЫМИ элементами являются: {list(set(numbers))}')
+
+
+non_recurring = []
+for i in numbers:
+    count = 0
+    for j in numbers:
+        if i == j:
+            count += 1
+    if count == 1:
+        non_recurring.append(i)
+print(f'А НЕПОВТОРЯЮЩИМИСЯ элементами будут: {sorted(non_recurring)}')

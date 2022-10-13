@@ -1,0 +1,17 @@
+# Задайте натуральное число N. Напишите программу, которая составит список простых множителей числа N.
+
+your_number = input('Введите натуральное число: ')
+while not your_number.isdigit():
+    your_number = input('Введите натуральное число: ')
+
+numbers = []
+i = 2
+num = int(your_number)
+while i * i <= num:
+    if num % i == 0:
+        numbers.append(i)
+        num //= i
+    else:
+        i += 1
+numbers.append(num)
+print(f'Список простых множителей числа {your_number}: {numbers}')
