@@ -1,0 +1,38 @@
+"""Задайте последовательность чисел.
+Напишите программу, которая выведет список неповторяющихся элементов исходной последовательности."""
+
+# list comprehension, lambda, filter, map
+from collections import Counter
+from random import randint
+
+# вариант с вводом последовательности пользователем и map
+numbers = list(map(int, input('Введите числа списка через пробел: ').split()))
+print(f'В последовательности чисел: {numbers}\n'
+      f'НЕПОВТОРЯЮЩИМИСЯ элементами будут: {list(filter(lambda x: Counter(numbers)[x] == 1, numbers))}')
+
+# вариант со сгенерированной последовательностью и list comprehension
+# numbers = [randint(0, 10) for i in range(0, 10)]
+# print(f'В последовательности чисел: {numbers}\n'
+#       f'НЕПОВТОРЯЮЩИМИСЯ элементами будут: {list(filter(lambda x: Counter(numbers)[x] == 1, numbers))}')
+
+
+
+# Старый вариант
+#
+# from random import randint
+#
+# numbers = []
+# for i in range(10):
+#     number = randint(0, 10)
+#     numbers.append(number)
+# print(f'В последовательности чисел: {numbers}\nУНИКАЛЬНЫМИ элементами являются: {list(set(numbers))}')
+#
+# non_recurring = []
+# for i in numbers:
+#     count = 0
+#     for j in numbers:
+#         if i == j:
+#             count += 1
+#     if count == 1:
+#         non_recurring.append(i)
+# print(f'А НЕПОВТОРЯЮЩИМИСЯ элементами будут: {sorted(non_recurring)}')
