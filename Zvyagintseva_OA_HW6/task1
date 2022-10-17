@@ -1,0 +1,16 @@
+# Напишите программу, которая принимает на вход вещественное число и показывает сумму его цифр.
+
+# list comprehension
+digit = input("Введите число: ")
+print(f'Сумма цифр: {sum([int(x) for x in digit if x.isdigit()])}')
+
+# Старая версия:
+#
+# digit = input("Введите число: ")
+#
+# count = 0
+# for i in digit:
+#     if i.isdigit():
+#         count += int(i)
+#
+# print(f'Сумма цифр: {count}')
