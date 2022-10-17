@@ -1,0 +1,46 @@
+# Реализуйте RLE алгоритм: реализуйте модуль сжатия и восстановления данных.
+
+with open('file1.txt', 'w') as file1:
+    my_txt = 'AADFFFC'
+    file1.write(my_txt)
+
+print(f'Изначальный текст: {my_txt}')
+
+
+# Модуль сжатия
+def coding(file):
+    with open(file, 'r') as f:
+        txt = f.read()
+    count = 1
+    new_txt = ''
+    for i in range(len(txt) - 1):
+        if txt[i] == txt[i + 1]:
+            count += 1
+        elif txt[i] != txt[i + 1]:
+            new_txt += str(count) + txt[i]
+            count = 1
+    new_txt += str(count) + txt[-1]
+    print(f'Текст после сжатия: {new_txt}')
+    with open('file2.txt', 'w') as f2:
+        f2.write(new_txt)
+
+
+coding('file1.txt')
+
+
+# Восстановление
+def decoding(file):
+    with open(file, 'r') as f2:
+        new_txt = f2.read()
+    new_text2 = ''
+    for i in range(len(new_txt)):
+        if new_txt[i].isdigit():
+            amount = int(new_txt[i])
+        elif new_txt[i].isalpha():
+            new_text2 += amount * new_txt[i]
+    print(f'Текст после восстановления: {new_text2}')
+    with open('file3.txt', 'w') as f3:
+        f3.write(new_text2)
+
+
+decoding('file2.txt')
