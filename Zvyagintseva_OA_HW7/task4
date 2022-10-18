@@ -1,0 +1,87 @@
+"""
+Задание 4.
+Реализуйте базовый класс Car. У данного класса должны быть следующие публичные атрибуты:
+speed, color, name, is_police (булево).
+А также публичные методы: go, stop, turn(direction),
+которые должны сообщать, что машина поехала, остановилась, повернула (куда).
+Опишите несколько дочерних классов: TownCar, SportCar, WorkCar, PoliceCar.
+Добавьте в базовый класс публичный метод show_speed,
+который должен показывать текущую скорость автомобиля.
+Для классов TownCar и WorkCar переопределите метод show_speed.
+При значении скорости свыше 60 (TownCar)
+и 40 (WorkCar) должно выводиться сообщение о превышении скорости.
+Создайте экземпляры классов, передайте значения атрибутов.
+Выполните доступ к атрибутам, выведите результат.
+Выполните вызов методов и также покажите результат.
+"""
+
+
+def car_route(message, class_car, name_car, color, speed, direction):
+    print(f'\n{message :*^30}')
+    model_car = class_car(name_car, color, speed)
+    model_car.go()
+    print(model_car.show_speed())
+    model_car.turn(direction)
+    model_car.stop()
+
+
+class Car:
+
+    def __init__(self, name, color, speed):
+        self.name = name
+        self.color = color
+        self.speed = speed
+        print(f'Type of transport: {self.name}\n'
+              f'Color: {self.color}')
+
+    def go(self):
+        print(f'{self.name} started moving')
+
+    def stop(self):
+        print(f'{self.name} stopped')
+
+    def turn(self, direction):
+        print(f'{self.name} turned {direction}.')
+
+    def show_speed(self):
+        return f'{self.name} speed: {self.speed}.'
+
+
+class WorkCar(Car):
+
+    def __init__(self, name, color, speed):
+        super().__init__(name, color, speed)
+
+    def show_speed(self):
+        if self.speed > 40:
+            print('Over speed!')
+        return f'{self.name} speed: {self.speed}.'
+
+
+class TownCar(Car):
+
+    def __init__(self, name, color, speed):
+        super().__init__(name, color, speed)
+
+    def show_speed(self):
+        if self.speed > 60:
+            print('Over speed!')
+        return f'{self.name} speed: {self.speed}.'
+
+
+class SportCar(Car):
+
+    def __init__(self, name, color, speed):
+        super().__init__(name, color, speed)
+
+
+class PoliceCar(Car):
+
+    def __init__(self, name, color, speed):
+        super().__init__(name, color, speed)
+
+
+car_route(' example 1 ', TownCar, 'TownCar', 'BLUE', 40, 'left')
+car_route(' example 2 ', SportCar, 'SportCar', 'RED', 140, 'right')
+car_route(' example 3 ', WorkCar, 'WorkCar', 'GREEN', 65, 'left')
+car_route(' example 4 ', PoliceCar, 'PoliceCar', 'WHITE', 110, 'right')
