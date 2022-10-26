@@ -1,0 +1,64 @@
+"""
+Задание 1.
+Создать класс TrafficLight (светофор)
+и определить у него один приватный атрибут color (цвет) и публичный метод running (запуск).
+В рамках метода running реализовать переключение светофора в режимы:
+красный, желтый, зеленый. Продолжительность первого состояния (красный)
+составляет 7 секунд, второго (желтый) — 2 секунды, третьего (зеленый) —
+на ваше усмотрение.
+Для имитации "горения" каждого цвета используйте ф-цию sleep модуля time
+Переключение между режимами должно осуществляться только
+в указанном порядке (красный, желтый, зеленый).
+Проверить работу примера, создав экземпляр и вызвав описанный метод.
+"""
+
+from time import sleep
+
+
+class TrafficLight:
+    __colour = [('red', 7), ('yellow', 2), ('green', 3)]
+
+    def running(self):
+        for color, t in self.__colour:
+            print(color)
+            sleep(t)
+
+
+traffic = TrafficLight()
+TrafficLight.running(traffic)
+
+
+"""Примечание! Мне не дает покоя, что светофор не горит циклично 'красный/желтый/зеленый', 
+т.к. после зеленого должен идти не красный, а снова желтый.Такой вариант работы реализован ниже. 
+Время горения сократила до 1 секунды для наглядности"""
+# from time import sleep
+# from enum import Enum
+#
+#
+# class Colour(Enum):
+#     red = 0
+#     yellow = 1
+#     green = 2
+#
+#
+# class TrafficLight:
+#     __colour = Colour.red
+#     __move: int = 1
+#
+#     def running(self):
+#
+#         for _ in range(10):
+#             if self.__colour == Colour.red:
+#                 print(self.__colour.name)
+#                 sleep(1)
+#                 self.__move = 1
+#             elif self.__colour == Colour.yellow:
+#                 print(self.__colour.name)
+#                 sleep(1)
+#             elif self.__colour == Colour.green:
+#                 print(self.__colour.name)
+#                 sleep(1)
+#                 self.__move = -1
+#
+#             self.__colour = Colour(self.__colour.value + self.__move)
+#
