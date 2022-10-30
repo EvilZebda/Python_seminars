@@ -1,0 +1,70 @@
+import unittest
+from Function import check_number
+from Function import find_txt
+
+"""Часть 1. Тестирование функции checkNumber, которая проверяет является ли введенный день недели - выходным.
+Разобрала использование: 
+assertTrue
+assertEqual
+assertNotEqual
+assertIsNone
+assertIsNotNone
+assertRaises
+"""
+
+
+class Test_day_of_function(unittest.TestCase):
+    def test_01_is_true(self):
+        self.assertTrue(check_number(6))
+
+    def test_02_equal(self):
+        self.assertEqual(check_number(2), (False, None))
+
+    def test_03_not_equal(self):
+        self.assertNotEqual(check_number(2), (True, None))
+
+    def test_04_is_none(self):
+        self.assertIsNone(check_number(8))
+
+    def test_05_is_not_none(self):
+        self.assertIsNotNone(check_number(2))
+
+    def test_06_raises(self):
+        with self.assertRaises(Exception):
+            check_number('1')
+
+
+"""Часть 2. Тестирование функции find_txt, которая удаляет из текста слова, содержащие 'абв'.
+Применила: 
+assertIn
+assertTrue
+assertFalse
+assertEqual
+assertNotEqual
+assertRaises
+"""
+
+
+class Test_text_function(unittest.TestCase):
+    def test_01_in(self):
+        self.assertIn('абв', 'абвгд')
+
+    def test_02_true(self):
+        self.assertTrue(find_txt('абвтест тест'))
+
+    def test_03_false(self):
+        self.assertFalse(find_txt(''))
+
+    def test_04_equal(self):
+        self.assertEqual(find_txt('абв что-то там тамабв '), (True, None))
+
+    def test_05_not_equal(self):
+        self.assertNotEqual(find_txt('абв что-то там тамабв '), (True, False))
+
+    def test_06_raises(self):
+        with self.assertRaises(Exception):
+            find_txt(25)
+
+
+if __name__ == '__main__':
+    unittest.main()

@@ -1,0 +1,18 @@
+def check_number(num):
+    if 6 <= num <= 7:
+        return True, print('Выходной')
+    elif 0 < num < 6:
+        return False, print('Рабочий')
+    else:
+        print('Число вне пределов 7 дней')
+
+
+def find_txt(my_text):
+    if my_text == '':
+        return print('Введите текст!')
+    else:
+        result = ' '.join(filter(lambda x: 'абв' not in x, my_text.split()))
+        return True, print(result)
+
+
+
